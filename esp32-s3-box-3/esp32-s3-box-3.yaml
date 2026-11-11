@@ -225,9 +225,12 @@ media_player:
 
 micro_wake_word:
   id: mww
+  vad:
   models:
     - model: /config/models/hey_helix.json
       id: hey_helix
+      probability_cutoff: 0.97
+      sliding_window_size: 7
   on_wake_word_detected:
     - voice_assistant.start:
         wake_word: !lambda return wake_word;
