@@ -232,6 +232,8 @@ micro_wake_word:
       probability_cutoff: 0.90
       sliding_window_size: 7
   on_wake_word_detected:
+    - script.stop: screen_idle_timeout
+    - light.turn_on: led
     - voice_assistant.start:
         wake_word: !lambda return wake_word;
 
@@ -398,7 +400,7 @@ script:
 - id: screen_idle_timeout
     mode: restart
     then:
-      - delay: 30s
+      - delay: 10s
       - if:
           condition:
             lambda: |-
