@@ -316,6 +316,7 @@ voice_assistant:
     - script.execute: start_wake_word
     - script.execute: set_idle_or_mute_phase
     - script.execute: draw_display
+    - script.execute: screen_idle_timeout
   on_client_disconnected:
     - script.execute: stop_wake_word
     - lambda: id(voice_assistant_phase) = ${voice_assist_not_ready_phase_id};
@@ -393,6 +394,18 @@ script:
           else:
             - display.page.show: initializing_page
             - component.update: s3_box_lcd
+            
+- id: screen_idle_timeout
+    mode: restart
+    then:
+      - delay: 30s
+      - if:
+          condition:
+            lambda: |-
+              return id(voice_assistant_phase) == ${voice_assist_idle_phase_id}
+                && !id(global_is_timer_active);
+          then:
+            - light.turn_off: led
 
   - id: fetch_first_active_timer
     then:
