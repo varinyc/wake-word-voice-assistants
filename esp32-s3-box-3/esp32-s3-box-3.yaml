@@ -290,6 +290,7 @@ voice_assistant:
           - micro_wake_word.start:
     - script.execute: set_idle_or_mute_phase
     - script.execute: draw_display
+    - script.execute: screen_idle_timeout
     # Clear text sensors
     - text_sensor.template.publish:
         id: text_request
