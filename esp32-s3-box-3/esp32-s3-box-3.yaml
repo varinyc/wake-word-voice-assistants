@@ -405,7 +405,7 @@ script:
       - if:
           condition:
             lambda: |-
-              return id(voice_assistant_phase) == ${voice_assist_idle_phase_id}
+              return id(voice_assistant_phase) == ${voice_assist_idle_phase_id};
           then:
             - light.turn_off: led
 
