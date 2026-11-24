@@ -406,7 +406,6 @@ script:
           condition:
             lambda: |-
               return id(voice_assistant_phase) == ${voice_assist_idle_phase_id}
-                && !id(global_is_timer_active);
           then:
             - light.turn_off: led
 
