@@ -397,7 +397,7 @@ script:
             - display.page.show: initializing_page
             - component.update: s3_box_lcd
             
-- id: screen_idle_timeout
+  - id: screen_idle_timeout
     mode: restart
     then:
       - delay: 10s
